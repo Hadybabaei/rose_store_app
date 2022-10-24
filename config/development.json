@@ -1,0 +1,5 @@
+{
+    "name":"rose_store_app",
+    "dbUri":"mongodb://localhost:27017/rosestore",
+    "port":3000
+}
