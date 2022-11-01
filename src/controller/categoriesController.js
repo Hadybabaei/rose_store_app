@@ -10,20 +10,18 @@ module.exports = new (class categoriesController{
                 if (err){
                     console.log(err)
                 }else{
-                    console.log(req.body)
-                    // const category = Categories.create({
-                    //     name:req.body.name,
-                    //     desc:req.body.desc,
-                    //     thumbnail:{
-                    //         data:req.file.filename,
-                    //         contentType:req.file.mimetype
-                    //     },
-                    // })
-                    // res.status(201).json({
-                    //     message:'New Category Created',
-                    //     Success:true,
-                    //     data:category
-                    // })
+                    const category = Categories.create({
+                        name:req.body.name,
+                        desc:req.body.desc,
+                        thumbnail:{
+                            data:req.file.filename,
+                            contentType:req.file.mimetype
+                        },
+                    })
+                    res.status(201).json({
+                        message:'New Category Created',
+                        Success:true,
+                    })
                 }
             })
         }catch(err){
@@ -31,5 +29,46 @@ module.exports = new (class categoriesController{
         }
     }
 
+    async getCategories(req,res){
+        try{
+            const categories = await Categories.find();
+            res.status(200).json({
+                categories,
+                Success:true,
+            })
+        }catch(err){
+            console.log(err)
+        }
+
+    }
+
+    async updateCategory(req,res){
+        try {
+            const data = await Categories.findByIdAndUpdate(req.params.id, req.body);
+            await data.save();
+            res.json({
+                message:"Category Updated Successfuly",
+                data:data.name
+            });
+          } catch (error) {
+            res.status(400).json({
+                data:null,
+                message:"Bad Request"
+            })
+          }
+    }
+
+    async destroyCategory(req,res){
+        try {
+            const data = await Categories.findByIdAndDelete(req.params.id);
+            if (!data) res.status(404).send("No item found");
+            res.status(200).send('Category Deleted Successfuly');
+        } catch (error) {
+            res.status(400).json({
+                message:"Bad Request",
+                data:null
+            });
+        }   
+    }
 
 })()

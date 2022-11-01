@@ -7,8 +7,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
-        console.log('new image created')
     }
 });
 
-module.exports = multer({ storage: storage }).single('testImage');
+module.exports = multer({ storage: storage }).single('thumbnail');
