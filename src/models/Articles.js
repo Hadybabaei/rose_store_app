@@ -10,11 +10,8 @@ const articleSchema = mongoose.Schema({
     slug:String,
     desc:String,
     body:String,
-    tags:String,
-    comments:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Comments'
-    },
+    tags:{type:String,default:null},
+    comments:{type:[{}],default:null},
     thumbnail:{data:Buffer,contentType:String}
 })
 

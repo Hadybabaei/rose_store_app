@@ -1,5 +1,6 @@
 {
     "name":"rose_store_app",
     "dbUri":"mongodb://localhost:27017/rosestore",
-    "port":3000
+    "port":3000,
+    "jwt_key":"asdkaskdxmmzxmxxmopiqwoeo[po2312mkmnxc@a,cmzxcQWE"
 }

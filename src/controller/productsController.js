@@ -73,7 +73,7 @@ module.exports = new (class productController{
           }
     }
 
-    async deleteProduct(req,res){
+    async destroyProduct(req,res){
         try {
             const data = await Product.findByIdAndDelete(req.params.id);
             if (!data) res.status(404).send("No item found");

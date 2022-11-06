@@ -39,7 +39,6 @@ module.exports = new (class categoriesController{
         }catch(err){
             console.log(err)
         }
-
     }
 
     async updateCategory(req,res){

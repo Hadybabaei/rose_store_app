@@ -7,8 +7,9 @@ const usersSchema = mongoose.Schema({
     email:String,
     phone:Number,
     password:String,
-    status:Boolean,
-    role:String,
+    status:{type:Boolean,default:true},
+    role:{type:String,default:"user"},
+    avatar:{data:Buffer,contentType:String,default:""}
 })
 
 usersSchema.plugin(timestamp)
