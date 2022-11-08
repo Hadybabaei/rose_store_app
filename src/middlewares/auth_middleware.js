@@ -10,7 +10,6 @@ async function isLoggined(req,res,next){
         jwt.verify(token, config.get("jwt_key"),(err,user)=>{
             if (err) console.log(err)
             req.user = user
-            console.log(req.user)
             next();
         });
     }else{

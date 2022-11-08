@@ -29,11 +29,6 @@ module.exports = new (class articlesController{
                             title:req.body.title,
                             slug:slug(req.body.title),
                             desc:req.body.desc,
-                            tags:req.body.tags,
-                            thumbnail:{
-                                data:req.file.filename,
-                                contentType:req.file.mimetype
-                            },
                         })      
                         res.status(201).json({
                             message:`Article ${req.body.title} created`

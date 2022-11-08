@@ -3,6 +3,7 @@ const config = require('config');
 const bodyParser = require('body-parser')
 const {dbcon} = require('./utils/dbcon');
 const router = require('./router');
+require('dotenv').config()
 
 
 const app = express();

@@ -5,6 +5,7 @@ const config = require('config')
 const { Token } = require("../models/Tokens")
 
 
+
 module.exports = new (class authController{
 
     async register(req,res){
@@ -53,8 +54,8 @@ module.exports = new (class authController{
              message:'Email or Password Wrong!'
          })
         }
-        const token = jwt.sign({ _id: user.id }, config.get("jwt_key"),{expiresIn:"300"});
-        const refreshToken = jwt.sign({ _id: user.id },config.get("refresh_token"))
+        const token = jwt.sign({ _id: user.id },process.env.JWT_SECRET,{expiresIn:"300"});
+        const refreshToken = jwt.sign({ _id: user.id },process.env.REFRESH_SECRET)
      
         if (refreshToken){
 
