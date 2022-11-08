@@ -9,7 +9,7 @@ const usersSchema = mongoose.Schema({
     password:String,
     status:{type:Boolean,default:true},
     role:{type:String,default:"user"},
-    avatar:{data:Buffer,contentType:String,default:""}
+    avatar:{data:Buffer,contentType:String,default:""},
 })
 
 usersSchema.plugin(timestamp)
